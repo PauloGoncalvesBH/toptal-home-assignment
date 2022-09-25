@@ -41,13 +41,18 @@ $ docker build -t todo-lists .
 $ docker run --rm -p 4567:4567 todo-lists
 ```
 
-## Tests
+Or, if you have [docker compose](https://docs.docker.com/compose/install/) installed, you can just run:
+```sh
+$ make start-app
+```
+
+## Integration testing
 
 Tests are important to ensure the integrity of the project with each change made. It is important that you pay attention that your change requires new tests or adaptation of the existing ones.
 
-### Integration testing
-
 API tests were implemented in Ruby using [httparty](https://www.ruby-lang.org/en/downloads/).
+
+### Running API tests using only Ruby
 
 **Prerequisites:**
 - [Ruby](https://www.ruby-lang.org/en/downloads/) installed.
@@ -65,5 +70,19 @@ $ bundle install
 # Run all API tests
 $ bundle exec rspec spec/test
 ```
+___
 
-You will see the test result in the CLI.
+### Running API tests through Docker
+
+When using docker it is no longer necessary to follow the step by step how to run the backend and frontend before running the API tests. The structure itself created in [docker-compose](../docker-compose.yml) guarantees that the application will be running before the test is executed.
+
+**Prerequisites:**
+- [docker](https://docs.docker.com/get-docker/) installed.
+- [docker compose](https://docs.docker.com/compose/install/) installed.
+
+**Steps to run all API tests:**
+
+```sh
+# Build backend, frontend, integration test images and run all API tests 
+$ make test-api
+```
