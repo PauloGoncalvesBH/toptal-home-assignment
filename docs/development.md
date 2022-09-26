@@ -86,3 +86,19 @@ When using docker it is no longer necessary to follow the step by step how to ru
 # Build backend, frontend, integration test images and run all API tests 
 $ make test-api
 ```
+
+## E2E testing
+
+E2E tests were implemented using [playwright](https://playwright.dev/).
+
+### Prerequisites
+
+- [docker](https://docs.docker.com/get-docker/) installed.
+- [docker compose](https://docs.docker.com/compose/install/) installed.
+
+### Steps to run all E2E tests
+
+```sh
+# Build backend, frontend, e2e test images and run all e2e tests 
+$ make test-e2e
+```

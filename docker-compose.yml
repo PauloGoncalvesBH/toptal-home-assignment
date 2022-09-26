@@ -18,3 +18,14 @@ services:
     network_mode: 'service:start-app'
     volumes:
       - ./tests/api:/app
+
+  test-e2e:
+    build:
+      context: ./tests
+      dockerfile: Dockerfile.playwright
+    command: yarn test:e2e
+    depends_on:
+      - start-app
+    network_mode: 'service:start-app'
+    volumes:
+      - ./tests:/app
