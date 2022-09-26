@@ -5,10 +5,16 @@ const {
   createItem,
   createList,
   clickChangeItemStatus,
-  deleteItem
+  deleteItem,
+  overwriteDatabase,
 } = require('../lib/helpers')
 
 test.describe('Manage item', () => {
+  test.beforeAll(async ({ request }) => {
+    const emptyDatabase = []
+    await overwriteDatabase(emptyDatabase, request)
+  })
+
   test.beforeEach(async ({ page }) => {
     await page.goto('/')
   })

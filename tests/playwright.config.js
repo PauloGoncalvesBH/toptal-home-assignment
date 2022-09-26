@@ -7,7 +7,6 @@ module.exports = {
   projects: [
     {
       name: 'e2e',
-      outputDir: 'test-results',
       testMatch: '**/*.e2e.test.js',
       use: {
         baseURL: BASE_URL,
