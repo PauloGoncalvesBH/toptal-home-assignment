@@ -31,10 +31,19 @@ const deleteList = async (nameList, page) => {
   await toDoListLocator.locator('.btn-danger').click()
 }
 
+const overwriteDatabase = async (payload, request) => {
+  const response = await request.post('/overwrite_database', {
+    data: payload,
+    headers: { "Content-Type": 'application/json' }
+  })
+  return response.json()
+}
+
 module.exports = {
   createItem,
   createList,
   clickChangeItemStatus,
   deleteItem,
   deleteList,
+  overwriteDatabase,
 }

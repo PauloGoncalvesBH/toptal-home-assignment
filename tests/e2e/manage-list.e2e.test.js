@@ -6,7 +6,7 @@ const {
   createList,
   clickChangeItemStatus,
   deleteList
-} = require('./lib/helpers')
+} = require('../lib/helpers')
 
 test.describe('Manage list', () => {
   test.beforeEach(async ({ page }) => {

@@ -19,13 +19,20 @@ services:
     volumes:
       - ./tests/api:/app
 
-  test-e2e:
+  base-test-playwright:
     build:
       context: ./tests
       dockerfile: Dockerfile.playwright
-    command: yarn test:e2e
     depends_on:
       - start-app
     network_mode: 'service:start-app'
     volumes:
       - ./tests:/app
+
+  test-e2e:
+    extends: base-test-playwright
+    command: yarn test:e2e
+
+  test-visual:
+    extends: base-test-playwright
+    command: yarn test:visual

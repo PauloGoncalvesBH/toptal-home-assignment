@@ -102,3 +102,29 @@ E2E tests were implemented using [playwright](https://playwright.dev/).
 # Build backend, frontend, e2e test images and run all e2e tests 
 $ make test-e2e
 ```
+
+## Visual regression testing
+
+Visual regression tests were implemented using [playwright](https://playwright.dev/).
+
+The visual regression test behaves similarly to the E2E tests, but has a different objective. Visual testing verifies that the software's user interface appears correctly to all users.
+
+### Prerequisites
+
+- [docker](https://docs.docker.com/get-docker/) installed.
+- [docker compose](https://docs.docker.com/compose/install/) installed.
+
+### Note
+
+The visual regression tests implemented use the most common desktop resolutions:
+- _1024x768_
+- _1920x1080_
+
+> Each visual regression test runs 2 times, 1 for each resolution.
+
+### Steps to run all visual tests
+
+```sh
+# Build backend, frontend, visual test images and run all visual tests 
+$ make test-visual
+```

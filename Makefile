@@ -1,4 +1,4 @@
-.PHONY: start-app test-api test-e2e
+.PHONY: start-app test-api test-e2e test-visual
 
 default: start-app
 
@@ -10,3 +10,6 @@ test-api:
 
 test-e2e:
 	@docker compose up --abort-on-container-exit --exit-code-from test-e2e --build test-e2e
+
+test-visual:
+	@docker compose up --abort-on-container-exit --exit-code-from test-visual test-visual
