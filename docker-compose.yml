@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  start-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4567:4567"
+
+  test-api:
+    build:
+      context: ./tests/api
+      dockerfile: Dockerfile
+    command: bundle exec rspec spec/test
+    depends_on:
+      - start-app
+    network_mode: 'service:start-app'
+    volumes:
+      - ./tests/api:/app
+
+  base-test-playwright:
+    build:
+      context: ./tests
+      dockerfile: Dockerfile.playwright
+    depends_on:
+      - start-app
+    network_mode: 'service:start-app'
+    volumes:
+      - ./tests:/app
+
+  test-e2e:
+    extends: base-test-playwright
+    command: yarn test:e2e
+
+  test-visual:
+    extends: base-test-playwright
+    command: yarn test:visual

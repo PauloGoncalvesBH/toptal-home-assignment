@@ -1,0 +1,11 @@
+FROM mcr.microsoft.com/playwright:v1.26.0-focal@sha256:de1b91d08fc6ee98c3a612fd3f6170b827bb71664b9765653dc9bf70d0334e96
+
+WORKDIR /app
+
+COPY package.json ./
+
+COPY yarn.lock ./
+
+RUN yarn
+
+COPY . .

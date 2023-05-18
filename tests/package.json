@@ -1,0 +1,17 @@
+{
+  "name": "e2e-visual-test",
+  "version": "0.0.1",
+  "private": false,
+  "license": "MIT",
+  "devDependencies": {
+    "@faker-js/faker": "^7.3.0",
+    "@playwright/test": "^1.22.1",
+    "playwright": "^1.22.1"
+  },
+  "scripts": {
+    "test:e2e": "yarn playwright test --project e2e --config playwright.config.js",
+    "test:visual": "yarn test:visual:1 && yarn test:visual:2",
+    "test:visual:1": "yarn playwright test --project visual-1-viewport-1024x768 --config playwright.config.js --workers 1",
+    "test:visual:2": "yarn playwright test --project visual-2-viewport-1920x1080 --config playwright.config.js --workers 1"
+  }
+}
